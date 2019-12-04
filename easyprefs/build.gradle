@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    bintrayRepo = 'EasyPrefs'
+    bintrayName = 'EasyPrefs'
+
+    // Maven metadata
+    publishedGroupId = 'com.yashdev.lib'
+    libraryName = 'EasyPrefs'
+    artifact = 'easyprefs'
+
+    libraryDescription = 'Easiest way ever for using SharedPreferences on Android'
+    libraryVersion = '1.0.0'
+
+    developerId = 'yashdev'
+    developerName = 'yash Dev'
+    developerEmail = 'yash@oxywebs.com'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+apply from: 'https://raw.githubusercontent.com/yashodharSepuri/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/yashodharSepuri/JCenter/master/bintrayv1.gradle'
